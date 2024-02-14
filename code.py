@@ -5,7 +5,7 @@ import framebufferio
 
 bit_depth = 1
 base_width = 64
-base_height = 32
+base_height = 64
 chain_across = 2
 tile_down = 2
 serpentine = True
@@ -13,7 +13,7 @@ serpentine = True
 width = base_width * chain_across
 height = base_height * tile_down
 
-addr_pins = [board.MTX_ADDRA, board.MTX_ADDRB, board.MTX_ADDRC, board.MTX_ADDRD]
+addr_pins = [board.MTX_ADDRA, board.MTX_ADDRB, board.MTX_ADDRC, board.MTX_ADDRD, board.MTX_ADDRE ]
 rgb_pins = [
     board.MTX_R1,
     board.MTX_G1,
@@ -39,3 +39,5 @@ matrix = rgbmatrix.RGBMatrix(
                 tile=tile_down, serpentine=serpentine,
             )
 display = framebufferio.FramebufferDisplay(matrix)
+
+
