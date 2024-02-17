@@ -62,6 +62,10 @@ palette[1] = 0xffffff
 
 
 while True:
+    palette[1] = (
+        (0x57c1fa if random.random() > .33 else 0) | #blue
+        (0xbcfa57 if random.random() > .66 else 0) | #yellowgreen
+        (0xf50cd2 if random.random() > .66 else 0))  #pink!
     conway.run( g1, g2, b1, b2, display)
    
 

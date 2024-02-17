@@ -93,7 +93,7 @@ def run( g1, g2, b1, b2, display ):
     
    
     
-    palette = displayio.Palette(2)
+    # palette = displayio.Palette(2)
         # run 2*n generations.
     # For the Conway tribute on 64x32, 80 frames is appropriate.  For random
     # values, 400 frames seems like a good number.  Working in this way, with
@@ -104,14 +104,15 @@ def run( g1, g2, b1, b2, display ):
     # start over with a new color.
     randomize(b1)
     # Pick a random color out of 3 primary colors or white.
-    palette[1] = (
-        (0x57c1fa if random.random() > .33 else 0) | #blue
-        (0xbcfa57 if random.random() > .33 else 0) | #yellowgreen
-        (0xf50cd2 if random.random() > .33 else 0))  #pink!
+    # palette[1] = (
+    #     (0x57c1fa if random.random() > .33 else 0) | #blue
+    #     (0xbcfa57 if random.random() > .33 else 0) | #yellowgreen
+    #     (0xf50cd2 if random.random() > .33 else 0))  #pink!
     # palette[1] = 0xffffff
     for _ in range(n):
         display.root_group = g1
         apply_life_rule(b1, b2)
         display.root_group = g2
         apply_life_rule(b2, b1)
+    
     
