@@ -2,6 +2,8 @@ import displayio
 import board
 import rgbmatrix
 import framebufferio
+import random
+import conway
 
 bit_depth = 1
 base_width = 64
@@ -27,6 +29,7 @@ latch_pin = board.MTX_LAT
 oe_pin = board.MTX_OE
 
 displayio.release_displays()
+
 matrix = rgbmatrix.RGBMatrix(
                 width=width,
                 height=height,
@@ -39,5 +42,33 @@ matrix = rgbmatrix.RGBMatrix(
                 tile=tile_down, serpentine=serpentine,
             )
 display = framebufferio.FramebufferDisplay(matrix)
+
+
+
+SCALE = 1
+b1 = displayio.Bitmap(display.width//SCALE, display.height//SCALE, 2)
+b2 = displayio.Bitmap(display.width//SCALE, display.height//SCALE, 2)
+palette = displayio.Palette(2)
+tg1 = displayio.TileGrid(b1, pixel_shader=palette)
+tg2 = displayio.TileGrid(b2, pixel_shader=palette)
+g1 = displayio.Group(scale=SCALE)
+g1.append(tg1)
+display.root_group = g1
+g2 = displayio.Group(scale=SCALE)
+g2.append(tg2)
+
+palette[1] = 0xffffff
+
+
+
+while True:
+    conway.run( g1, g2, b1, b2, display)
+   
+
+
+
+
+
+
 
 
