@@ -7,11 +7,6 @@ import conway
 import time
 import gifio
 import os
-import random
-import conway
-import time
-import gifio
-import os
 
 bit_depth = 2
 base_width = 64
